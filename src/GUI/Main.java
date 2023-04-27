@@ -13,7 +13,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JButton;
 
 public class Main extends JFrame {
-    int x = -1000, y = -1000;
+    int x = 0, y = 0;
 
     private JPanel contentPane;
 
@@ -38,18 +38,19 @@ public class Main extends JFrame {
      */
     public Main() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
+        setBounds(100, 100, 600, 400);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
         setContentPane(contentPane);
         contentPane.setLayout(new BorderLayout(0, 0));
 
-        JPanel panel = new JPanel() {
+        JPanel nivel1 = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 g.drawLine(0, 0, getWidth(), getHeight());
+                g.drawLine(0,100,getWidth(),getHeight());
             }
 
 
@@ -59,8 +60,23 @@ public class Main extends JFrame {
 
 
 
+
         };
-        contentPane.add(panel, BorderLayout.CENTER);
+
+        JPanel nivel2 = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawLine(0, 0, getWidth(), getHeight());
+                g.drawLine(0,100,getWidth(),getHeight());
+            }
+        };
+
+
+
+
+
+        contentPane.add(nivel1, BorderLayout.CENTER);
 
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(0, 255, 0));
@@ -72,7 +88,7 @@ public class Main extends JFrame {
 
 
 
-
+//controles
         this.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -85,29 +101,25 @@ public class Main extends JFrame {
                 System.out.println(e.getKeyCode());
                 System.out.println(e.getKeyChar());
 
-
-                if (e.getKeyCode() == 87) {
-                    panel.setLocation(x,y=y-1);
-                    repaint();
-
-                }
-
-                if (e.getKeyCode() == 83) {
-                    panel.setLocation(x,y=y+1);
+                if (e.getKeyCode() == KeyEvent.VK_A) {
+                    nivel1.setLocation(x -= 3, y);
                     repaint();
                 }
 
-                if (e.getKeyCode() == 65) {
-                    panel.setLocation(x=x-1,y);
-                    repaint();
-                }
-                if (e.getKeyCode() == 68) {
-                    panel.setLocation(x=x+1,y);
+                if (e.getKeyCode() == KeyEvent.VK_D) {
+                    nivel1.setLocation(x += 3, y);
                     repaint();
                 }
 
+                if (e.getKeyCode() == KeyEvent.VK_W) {
+                    nivel1.setLocation(x, y -= 3);
+                    repaint();
+                }
 
-
+                if (e.getKeyCode() == KeyEvent.VK_S) {
+                    nivel1.setLocation(x, y += 3);
+                    repaint();
+                }
             }
 
             @Override
@@ -115,10 +127,8 @@ public class Main extends JFrame {
                 System.out.println("keyReleased");
                 System.out.println(e.getKeyCode());
                 System.out.println(e.getKeyChar());
-
             }
         });
-
 
 
 
