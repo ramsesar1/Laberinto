@@ -10,7 +10,9 @@ import java.awt.event.KeyListener;
 import javax.swing.JButton;
 
 public class Main extends JFrame {
-  //  int x = 0, y = 0;
+    JButton jugador = new JButton();
+
+    //  int x = 0, y = 0;
 
     private JPanel contentPane;
 
@@ -72,19 +74,20 @@ public class Main extends JFrame {
 
                 g.fillRect(30, 300, 550, 15);
 
+                jugador.setLocation(0, 0);
+
                 //columnas
                 // g.fillRect(90, 30, 15, 30);
             }
         };
 
-        JButton jugador = new JButton();
         jugador.setBackground(Color.GREEN);
         jugador.setPreferredSize(new Dimension(10, 10));
-        jugador.setBounds(45, 45, 10, 10);
+
         nivel1.add(jugador);
 
         contentPane.add(nivel1, BorderLayout.CENTER);
-
+        nivel1.setSize(contentPane.getSize());
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(0, 255, 0));
         contentPane.add(panel_1, BorderLayout.SOUTH);
