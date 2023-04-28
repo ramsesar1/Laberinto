@@ -49,8 +49,50 @@ public class Main extends JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawLine(0, 0, getWidth(), getHeight());
-                g.drawLine(0,100,getWidth(),getHeight());
+                g.setColor(Color.BLACK);
+                g.fillRect(30, 0, 550, 15);
+
+
+
+
+                g.fillRect(30, 30, 15, 280);
+                g.fillRect(560, 0, 15, 280);
+
+
+
+                //filas
+
+                g.fillRect(30, 30, 520, 15);
+
+                g.fillRect(60, 60, 550, 15);
+
+                g.fillRect(30, 90, 520, 15);
+
+                g.fillRect(60, 120, 550, 15);
+
+                g.fillRect(30, 150, 520, 15);
+
+                g.fillRect(60, 180, 550, 15);
+
+                g.fillRect(30, 210, 520, 15);
+
+                g.fillRect(30, 240, 520, 15);
+
+                g.fillRect(60, 270, 520, 15);
+
+                g.fillRect(30, 300, 550, 15);
+
+
+
+                //columnas
+
+              //  g.fillRect(90, 30, 15, 30);
+
+
+
+
+
+
             }
 
 
@@ -102,22 +144,22 @@ public class Main extends JFrame {
                 System.out.println(e.getKeyChar());
 
                 if (e.getKeyCode() == KeyEvent.VK_A) {
-                    nivel1.setLocation(x -= 3, y);
+                    nivel1.setLocation(x -= 10, y);
                     repaint();
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_D) {
-                    nivel1.setLocation(x += 3, y);
+                    nivel1.setLocation(x += 10, y);
                     repaint();
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_W) {
-                    nivel1.setLocation(x, y -= 3);
+                    nivel1.setLocation(x, y -= 10);
                     repaint();
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_S) {
-                    nivel1.setLocation(x, y += 3);
+                    nivel1.setLocation(x, y += 10);
                     repaint();
                 }
             }
