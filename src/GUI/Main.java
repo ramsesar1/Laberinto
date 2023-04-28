@@ -1,19 +1,16 @@
 package GUI;
 
-import java.awt.EventQueue;
-import java.awt.Graphics;
+import java.awt.*;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JButton;
 
 public class Main extends JFrame {
-    int x = 0, y = 0;
+  //  int x = 0, y = 0;
 
     private JPanel contentPane;
 
@@ -51,17 +48,10 @@ public class Main extends JFrame {
                 super.paintComponent(g);
                 g.setColor(Color.BLACK);
                 g.fillRect(30, 0, 550, 15);
-
-
-
-
                 g.fillRect(30, 30, 15, 280);
                 g.fillRect(560, 0, 15, 280);
 
-
-
                 //filas
-
                 g.fillRect(30, 30, 520, 15);
 
                 g.fillRect(60, 60, 550, 15);
@@ -82,41 +72,16 @@ public class Main extends JFrame {
 
                 g.fillRect(30, 300, 550, 15);
 
-
-
                 //columnas
-
-              //  g.fillRect(90, 30, 15, 30);
-
-
-
-
-
-
-            }
-
-
-
-
-
-
-
-
-
-        };
-
-        JPanel nivel2 = new JPanel(){
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.drawLine(0, 0, getWidth(), getHeight());
-                g.drawLine(0,100,getWidth(),getHeight());
+                // g.fillRect(90, 30, 15, 30);
             }
         };
 
-
-
-
+        JButton jugador = new JButton();
+        jugador.setBackground(Color.GREEN);
+        jugador.setPreferredSize(new Dimension(10, 10));
+        jugador.setBounds(45, 45, 10, 10);
+        nivel1.add(jugador);
 
         contentPane.add(nivel1, BorderLayout.CENTER);
 
@@ -127,11 +92,7 @@ public class Main extends JFrame {
         JButton btnNewButton = new JButton("Reiniciar");
         panel_1.add(btnNewButton);
 
-
-
-
-//controles
-        this.addKeyListener(new KeyListener() {
+        jugador.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
                 System.out.println("keyTyped");
@@ -144,22 +105,22 @@ public class Main extends JFrame {
                 System.out.println(e.getKeyChar());
 
                 if (e.getKeyCode() == KeyEvent.VK_A) {
-                    nivel1.setLocation(x -= 10, y);
+                    jugador.setLocation(jugador.getX() - 10, jugador.getY());
                     repaint();
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_D) {
-                    nivel1.setLocation(x += 10, y);
+                    jugador.setLocation(jugador.getX() + 10, jugador.getY());
                     repaint();
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_W) {
-                    nivel1.setLocation(x, y -= 10);
+                    jugador.setLocation(jugador.getX(), jugador.getY() - 10);
                     repaint();
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_S) {
-                    nivel1.setLocation(x, y += 10);
+                    jugador.setLocation(jugador.getX(), jugador.getY() + 10);
                     repaint();
                 }
             }
@@ -167,37 +128,10 @@ public class Main extends JFrame {
             @Override
             public void keyReleased(KeyEvent e) {
                 System.out.println("keyReleased");
-                System.out.println(e.getKeyCode());
-                System.out.println(e.getKeyChar());
             }
+
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
 }
+
