@@ -85,14 +85,14 @@ public class Main extends JFrame {
         ArrayList<Rectangle> hitbox = new ArrayList<>();
         hitbox.add(new Rectangle(30, 30, 10, 280));
         hitbox.add(new Rectangle(570, 0, 10, 280));
-        hitbox.add(new Rectangle(30, 30, 520, 10));
-        hitbox.add(new Rectangle(60, 60, 550, 10));
-        hitbox.add(new Rectangle(30, 90, 520, 10));
-        hitbox.add(new Rectangle(60, 120, 550, 10));
-        hitbox.add(new Rectangle(30, 150, 520, 10));
-        hitbox.add(new Rectangle(60, 180, 550, 10));
-        hitbox.add(new Rectangle(30, 210, 520, 10));
-        hitbox.add(new Rectangle(30, 240, 520, 10));
+        hitbox.add(new Rectangle(30, 35, 520, 10));
+        hitbox.add(new Rectangle(60, 65, 550, 10));
+        hitbox.add(new Rectangle(30, 95, 520, 10));
+        hitbox.add(new Rectangle(60, 125, 550, 10));
+        hitbox.add(new Rectangle(30, 155, 520, 10));
+        hitbox.add(new Rectangle(60, 185, 550, 10));
+        hitbox.add(new Rectangle(30, 215, 520, 10));
+        hitbox.add(new Rectangle(30, 245, 520, 10));
         hitbox.add(new Rectangle(60, 270, 520, 10));
 
         JButton jugador = new JButton();
