@@ -34,17 +34,23 @@ public class Main extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(new BorderLayout(0, 0));
 
+
+        //hitboxes para nivel 1
         ArrayList<Rectangle> hitbox = new ArrayList<>();
         hitbox.add(new Rectangle(30, 30, 10, 280));
         hitbox.add(new Rectangle(570, 0, 10, 280));
         hitbox.add(new Rectangle(30, 35, 520, 10));
-        hitbox.add(new Rectangle(60, 65, 550, 10));
+
+        hitbox.add(new Rectangle(280, 65, 250, 10));
+        hitbox.add(new Rectangle(60, 65, 250, 10));
+
+
         hitbox.add(new Rectangle(30, 95, 520, 10));
         hitbox.add(new Rectangle(60, 125, 550, 10));
         hitbox.add(new Rectangle(30, 155, 520, 10));
         hitbox.add(new Rectangle(60, 185, 550, 10));
         hitbox.add(new Rectangle(30, 215, 520, 10));
-        hitbox.add(new Rectangle(30, 245, 520, 10));
+        hitbox.add(new Rectangle(60, 245, 520, 10));
         hitbox.add(new Rectangle(60, 270, 520, 10));
 
         JPanel nivel1 = new JPanel() {
@@ -52,6 +58,7 @@ public class Main extends JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 g.setColor(Color.BLACK);
+                /*
                 g.fillRect(30, 0, 550, 15);
                 g.fillRect(30, 30, 15, 280);
                 g.fillRect(560, 0, 15, 280);
@@ -61,14 +68,17 @@ public class Main extends JFrame {
                 g.fillRect(60, 60, 550, 15);
                 g.fillRect(30, 90, 520, 15);
                 g.fillRect(60, 120, 550, 15);
-                g.fillRect(30, 150, 520, 15);
+                g.fillRect(30, 150, 500, 15);
                 g.fillRect(60, 180, 550, 15);
                 g.fillRect(30, 210, 520, 15);
                 g.fillRect(30, 240, 520, 15);
                 g.fillRect(60, 270, 520, 15);
 
+*/
+
+
                 // inserta las hitbox en el panel
-                g.setColor(Color.RED);
+              //  g.setColor(Color.RED);
                 for (Rectangle rect : hitbox) {
                     g.fillRect(rect.x, rect.y, rect.width, rect.height);
                 }
