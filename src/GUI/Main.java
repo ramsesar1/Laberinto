@@ -1,7 +1,6 @@
 package GUI;
 
 import java.awt.*;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -11,13 +10,8 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 
 public class Main extends JFrame {
-    //  int x = 0, y = 0;
-
     private JPanel contentPane;
 
-    /**
-     * Launch the application.
-     */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -31,9 +25,6 @@ public class Main extends JFrame {
         });
     }
 
-    /**
-     * Create the frame.
-     */
     public Main() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 600, 400);
@@ -42,45 +33,6 @@ public class Main extends JFrame {
 
         setContentPane(contentPane);
         contentPane.setLayout(new BorderLayout(0, 0));
-
-        JPanel nivel1 = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.setColor(Color.BLACK);
-             //   g.fillRect(30, 0, 550, 15);
-                g.fillRect(30, 30, 15, 280);
-                g.fillRect(560, 0, 15, 280);
-
-                //filas
-                g.fillRect(30, 30, 520, 15);
-
-                g.fillRect(60, 60, 550, 15);
-
-                g.fillRect(30, 90, 520, 15);
-
-                g.fillRect(60, 120, 550, 15);
-
-                g.fillRect(30, 150, 520, 15);
-
-                g.fillRect(60, 180, 550, 15);
-
-                g.fillRect(30, 210, 520, 15);
-
-                g.fillRect(30, 240, 520, 15);
-
-                g.fillRect(60, 270, 520, 15);
-
-                g.fillRect(30, 300, 550, 15);
-
-                g.setColor(Color.RED);
-                g.fillRect(550, 285, 30, 15);
-
-                //columnas
-                // g.fillRect(90, 30, 15, 30);
-            }
-        };
-
 
         ArrayList<Rectangle> hitbox = new ArrayList<>();
         hitbox.add(new Rectangle(30, 30, 10, 280));
@@ -95,12 +47,41 @@ public class Main extends JFrame {
         hitbox.add(new Rectangle(30, 245, 520, 10));
         hitbox.add(new Rectangle(60, 270, 520, 10));
 
+        JPanel nivel1 = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.setColor(Color.BLACK);
+                g.fillRect(30, 0, 550, 15);
+                g.fillRect(30, 30, 15, 280);
+                g.fillRect(560, 0, 15, 280);
+
+                //filas
+                g.fillRect(30, 30, 520, 15);
+                g.fillRect(60, 60, 550, 15);
+                g.fillRect(30, 90, 520, 15);
+                g.fillRect(60, 120, 550, 15);
+                g.fillRect(30, 150, 520, 15);
+                g.fillRect(60, 180, 550, 15);
+                g.fillRect(30, 210, 520, 15);
+                g.fillRect(30, 240, 520, 15);
+                g.fillRect(60, 270, 520, 15);
+
+                // inserta las hitbox en el panel
+                g.setColor(Color.RED);
+                for (Rectangle rect : hitbox) {
+                    g.fillRect(rect.x, rect.y, rect.width, rect.height);
+                }
+            }
+        };
+
         JButton jugador = new JButton();
         jugador.setBackground(Color.GREEN);
         jugador.setPreferredSize(new Dimension(10, 10));
         jugador.setBounds(45, 45, 10, 10);
-        nivel1.add(jugador);
 
+        nivel1.add(jugador);
+        contentPane.add(nivel1);
         contentPane.add(nivel1, BorderLayout.CENTER);
 
         JPanel panel_1 = new JPanel();
