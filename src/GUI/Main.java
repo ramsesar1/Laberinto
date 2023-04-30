@@ -12,6 +12,7 @@ import javax.swing.JButton;
 public class Main extends JFrame {
     private JPanel contentPane;
 //    ArrayList<Rectangle> hitbox = new ArrayList<>();
+
     ArrayList<Rectangle> nivel1Hitboxes = new ArrayList<>();
     ArrayList<Rectangle> nivel2Hitboxes = new ArrayList<>();
     public static void main(String[] args) {
@@ -30,6 +31,8 @@ public class Main extends JFrame {
 
 
     public Main() {
+
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 600, 400);
         contentPane = new JPanel();
@@ -290,18 +293,7 @@ public class Main extends JFrame {
             }
         };
 
-        JPanel hitboxPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Graphics2D g2d = (Graphics2D) g;
-                g2d.setColor(Color.RED);
-                for(Rectangle r : nivel1Hitboxes) {
-                    g2d.fillRect(r.x, r.y, r.width, r.height);
-                }
-            }
-        };
-        contentPane.add(hitboxPanel, BorderLayout.CENTER);
+
         contentPane.add(nivel1, BorderLayout.CENTER);
 
         Rectangle meta = new Rectangle(60, 270, 60, 60);
@@ -324,6 +316,7 @@ public class Main extends JFrame {
         panel_1.add(btnNewButton);
 
         jugador.addKeyListener(new KeyListener() {
+            boolean nivelactivo = true;
             @Override
             public void keyTyped(KeyEvent e) {
                 System.out.println("keyTyped");
@@ -335,15 +328,22 @@ public class Main extends JFrame {
                 System.out.println(e.getKeyCode());
                 System.out.println(e.getKeyChar());
                 if (e.getKeyCode() == KeyEvent.VK_A) {
-
                     Rectangle contacto = new Rectangle(jugador.getX() - 10, jugador.getY(), jugador.getWidth(), jugador.getHeight());
                     boolean puedemoverse = true;
-                    for (Rectangle rect : nivel1Hitboxes) {
-                        if (rect.intersects(contacto)) {
-                            puedemoverse = false;
-                            break;
+                    if (nivelactivo) {
+                        for (Rectangle rect : nivel1Hitboxes) {
+                            if (rect.intersects(contacto)) {
+                                puedemoverse = false;
+                                break;
+                            }
                         }
-
+                    } else {
+                        for (Rectangle rect : nivel2Hitboxes) {
+                            if (rect.intersects(contacto)) {
+                                puedemoverse = false;
+                                break;
+                            }
+                        }
                     }
                     if (puedemoverse) {
                         jugador.setLocation(jugador.getX() - 10, jugador.getY());
@@ -354,10 +354,19 @@ public class Main extends JFrame {
                 if (e.getKeyCode() == KeyEvent.VK_D) {
                     Rectangle contacto = new Rectangle(jugador.getX() + 10, jugador.getY(), jugador.getWidth(), jugador.getHeight());
                     boolean puedemoverse = true;
-                    for (Rectangle rect : nivel1Hitboxes) {
-                        if (rect.intersects(contacto)) {
-                            puedemoverse = false;
-                            break;
+                    if (nivelactivo) {
+                        for (Rectangle rect : nivel1Hitboxes) {
+                            if (rect.intersects(contacto)) {
+                                puedemoverse = false;
+                                break;
+                            }
+                        }
+                    } else {
+                        for (Rectangle rect : nivel2Hitboxes) {
+                            if (rect.intersects(contacto)) {
+                                puedemoverse = false;
+                                break;
+                            }
                         }
                     }
                     if (puedemoverse) {
@@ -369,10 +378,19 @@ public class Main extends JFrame {
                 if (e.getKeyCode() == KeyEvent.VK_W) {
                     Rectangle contacto = new Rectangle(jugador.getX(), jugador.getY() - 10, jugador.getWidth(), jugador.getHeight());
                     boolean puedemoverse = true;
-                    for (Rectangle rect : nivel1Hitboxes) {
-                        if (rect.intersects(contacto)) {
-                            puedemoverse = false;
-                            break;
+                    if (nivelactivo) {
+                        for (Rectangle rect : nivel1Hitboxes) {
+                            if (rect.intersects(contacto)) {
+                                puedemoverse = false;
+                                break;
+                            }
+                        }
+                    } else {
+                        for (Rectangle rect : nivel2Hitboxes) {
+                            if (rect.intersects(contacto)) {
+                                puedemoverse = false;
+                                break;
+                            }
                         }
                     }
                     if (puedemoverse) {
@@ -384,10 +402,19 @@ public class Main extends JFrame {
                 if (e.getKeyCode() == KeyEvent.VK_S) {
                     Rectangle contacto = new Rectangle(jugador.getX(), jugador.getY() + 10, jugador.getWidth(), jugador.getHeight());
                     boolean puedemoverse = true;
-                    for (Rectangle rect : nivel1Hitboxes) {
-                        if (rect.intersects(contacto)) {
-                            puedemoverse = false;
-                            break;
+                    if (nivelactivo) {
+                        for (Rectangle rect : nivel1Hitboxes) {
+                            if (rect.intersects(contacto)) {
+                                puedemoverse = false;
+                                break;
+                            }
+                        }
+                    } else {
+                        for (Rectangle rect : nivel2Hitboxes) {
+                            if (rect.intersects(contacto)) {
+                                puedemoverse = false;
+                                break;
+                            }
                         }
                     }
                     if (puedemoverse) {
@@ -395,7 +422,6 @@ public class Main extends JFrame {
                         repaint();
                     }
                 }
-                //cambio de nivel
                 if (meta.intersects(jugador.getBounds())) {
                     contentPane.remove(nivel1);
                     contentPane.add(nivel2, BorderLayout.CENTER);
@@ -404,19 +430,20 @@ public class Main extends JFrame {
 
                     nivel2.add(jugador);
 
+                    nivel1.setVisible(false);
+                    nivel2.setVisible(true);
                     nivel1Hitboxes.clear();
-
-
+                    jugador.setLocation(45, 45);
+                    nivelactivo = false;
 
 
                 }
-            }
+                }
 
             @Override
             public void keyReleased(KeyEvent e) {
                 System.out.println("keyReleased");
             }
-
         });
 
         jugador.setFocusable(true);
