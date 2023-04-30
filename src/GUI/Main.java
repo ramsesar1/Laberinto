@@ -11,7 +11,9 @@ import javax.swing.JButton;
 
 public class Main extends JFrame {
     private JPanel contentPane;
-
+//    ArrayList<Rectangle> hitbox = new ArrayList<>();
+    ArrayList<Rectangle> nivel1Hitboxes = new ArrayList<>();
+    ArrayList<Rectangle> nivel2Hitboxes = new ArrayList<>();
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -25,6 +27,8 @@ public class Main extends JFrame {
         });
     }
 
+
+
     public Main() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 600, 400);
@@ -36,9 +40,8 @@ public class Main extends JFrame {
 
 
         //hitboxes para nivel 1
-        ArrayList<Rectangle> hitbox = new ArrayList<>();
 
-        hitbox.add(new Rectangle(30, 30, 10, 280));
+        nivel1Hitboxes.add(new Rectangle(30, 30, 10, 280));
 
 
         //-----------------------hitboxes del nivel1----------------------------------------
@@ -46,77 +49,83 @@ public class Main extends JFrame {
         //----------filas------------
 
         //fila 1
-        hitbox.add(new Rectangle(570, 0, 10, 280));
-        hitbox.add(new Rectangle(30, 35, 520, 10));
-        hitbox.add(new Rectangle(30, 0, 550, 10));
-        hitbox.add(new Rectangle(30, 0, 10, 60));
+        nivel1Hitboxes.add(new Rectangle(570, 0, 10, 280));
+        nivel1Hitboxes.add(new Rectangle(30, 35, 520, 10));
+        nivel1Hitboxes.add(new Rectangle(30, 0, 550, 10));
+        nivel1Hitboxes.add(new Rectangle(30, 0, 10, 60));
         //fila2
-        hitbox.add(new Rectangle(280, 65, 360, 10));
-        hitbox.add(new Rectangle(60, 65, 190, 10));
+        nivel1Hitboxes.add(new Rectangle(280, 65, 360, 10));
+        nivel1Hitboxes.add(new Rectangle(60, 65, 190, 10));
         //fila3
-        hitbox.add(new Rectangle(280, 95, 80, 10));
-        hitbox.add(new Rectangle(30, 95, 180, 10));
+        nivel1Hitboxes.add(new Rectangle(280, 95, 80, 10));
+        nivel1Hitboxes.add(new Rectangle(30, 95, 180, 10));
         //fila4
-        hitbox.add(new Rectangle(60, 125, 250, 10));
-        hitbox.add(new Rectangle(350, 125, 140, 10));
+        nivel1Hitboxes.add(new Rectangle(60, 125, 250, 10));
+        nivel1Hitboxes.add(new Rectangle(350, 125, 140, 10));
         //fila5
-        hitbox.add(new Rectangle(30, 155, 120, 10));
-        hitbox.add(new Rectangle(250, 155, 40, 10));
-        hitbox.add(new Rectangle(370, 155, 120, 10));
+        nivel1Hitboxes.add(new Rectangle(30, 155, 120, 10));
+        nivel1Hitboxes.add(new Rectangle(250, 155, 40, 10));
+        nivel1Hitboxes.add(new Rectangle(370, 155, 120, 10));
         //fila6
-        hitbox.add(new Rectangle(60, 185, 90, 10));
-        hitbox.add(new Rectangle(120, 185, 250, 10));
-        hitbox.add(new Rectangle(420, 185, 120, 10));
+        nivel1Hitboxes.add(new Rectangle(60, 185, 90, 10));
+        nivel1Hitboxes.add(new Rectangle(120, 185, 250, 10));
+        nivel1Hitboxes.add(new Rectangle(420, 185, 120, 10));
         //fila7
-        hitbox.add(new Rectangle(60, 215, 120, 10));
-        hitbox.add(new Rectangle(220, 215, 150, 10));
-        hitbox.add(new Rectangle(480, 215, 200, 10));
+        nivel1Hitboxes.add(new Rectangle(60, 215, 120, 10));
+        nivel1Hitboxes.add(new Rectangle(220, 215, 150, 10));
+        nivel1Hitboxes.add(new Rectangle(480, 215, 200, 10));
         //fila8
-        hitbox.add(new Rectangle(60, 245, 100, 10));
-        hitbox.add(new Rectangle(180, 245, 80, 10));
-        hitbox.add(new Rectangle(380, 245, 140, 10));
+        nivel1Hitboxes.add(new Rectangle(60, 245, 100, 10));
+        nivel1Hitboxes.add(new Rectangle(180, 245, 80, 10));
+        nivel1Hitboxes.add(new Rectangle(380, 245, 140, 10));
         //fila9
-        hitbox.add(new Rectangle(60, 270, 520, 10));
+        nivel1Hitboxes.add(new Rectangle(60, 270, 520, 10));
 
 
         //----------------columnas--------------------
 
         //fila1
-        hitbox.add(new Rectangle(120,35,10,30));
-        hitbox.add(new Rectangle(150,35,10,30));
+        nivel1Hitboxes.add(new Rectangle(120,35,10,30));
+        nivel1Hitboxes.add(new Rectangle(150,35,10,30));
         //fila2
-        hitbox.add(new Rectangle(240,65,10,30));
-        hitbox.add(new Rectangle(350,65,10,30));
-        hitbox.add(new Rectangle(410,65,10,30));
+        nivel1Hitboxes.add(new Rectangle(240,65,10,30));
+        nivel1Hitboxes.add(new Rectangle(350,65,10,30));
+        nivel1Hitboxes.add(new Rectangle(410,65,10,30));
         //fila3
-        hitbox.add(new Rectangle(280,95,10,30));
-        hitbox.add(new Rectangle(350,95,10,30));
-        hitbox.add(new Rectangle(480,95,10,30));
+        nivel1Hitboxes.add(new Rectangle(280,95,10,30));
+        nivel1Hitboxes.add(new Rectangle(350,95,10,30));
+        nivel1Hitboxes.add(new Rectangle(480,95,10,30));
         //fila4
-        hitbox.add(new Rectangle(180,125,10,30));
-        hitbox.add(new Rectangle(510,125,10,30));
+        nivel1Hitboxes.add(new Rectangle(180,125,10,30));
+        nivel1Hitboxes.add(new Rectangle(510,125,10,30));
         //fila5
-        hitbox.add(new Rectangle(80,155,10,30));
-        hitbox.add(new Rectangle(240,155,10,30));
-        hitbox.add(new Rectangle(360,155,10,30));
-        hitbox.add(new Rectangle(140,155,10,30));
-        hitbox.add(new Rectangle(510,155,10,30));
+        nivel1Hitboxes.add(new Rectangle(80,155,10,30));
+        nivel1Hitboxes.add(new Rectangle(240,155,10,30));
+        nivel1Hitboxes.add(new Rectangle(360,155,10,30));
+        nivel1Hitboxes.add(new Rectangle(140,155,10,30));
+        nivel1Hitboxes.add(new Rectangle(510,155,10,30));
         //fila6
-        hitbox.add(new Rectangle(510,185,10,30));
-        hitbox.add(new Rectangle(450,185,10,30));
-        hitbox.add(new Rectangle(360,185,10,30));
+        nivel1Hitboxes.add(new Rectangle(510,185,10,30));
+        nivel1Hitboxes.add(new Rectangle(450,185,10,30));
+        nivel1Hitboxes.add(new Rectangle(360,185,10,30));
         //fila7
-        hitbox.add(new Rectangle(510,215,10,30));
-        hitbox.add(new Rectangle(350,215,10,30));
-        hitbox.add(new Rectangle(60,215,10,30));
+        nivel1Hitboxes.add(new Rectangle(510,215,10,30));
+        nivel1Hitboxes.add(new Rectangle(350,215,10,30));
+        nivel1Hitboxes.add(new Rectangle(60,215,10,30));
         //fila8
-        hitbox.add(new Rectangle(60,245,10,30));
-        hitbox.add(new Rectangle(180,245,10,30));
-        hitbox.add(new Rectangle(120,245,10,30));
+        nivel1Hitboxes.add(new Rectangle(60,245,10,30));
+        nivel1Hitboxes.add(new Rectangle(180,245,10,30));
+        nivel1Hitboxes.add(new Rectangle(120,245,10,30));
 
         //-----------------------hitboxes del nivel2----------------------------------------
 
 
+        JPanel nivel2 = new JPanel() {
+            @Override
+            public void paintComponent(Graphics g) {
+
+            }
+        };
 
         JPanel nivel1 = new JPanel() {
             @Override
@@ -129,18 +138,26 @@ public class Main extends JFrame {
                 g.setColor(Color.BLACK);
 
 
-                for (Rectangle rect : hitbox) {
+                for (Rectangle rect : nivel1Hitboxes) {
                     g.fillRect(rect.x, rect.y, rect.width, rect.height);
                 }
             }
         };
 
-        JPanel nivel2 = new JPanel() {
+        JPanel hitboxPanel = new JPanel() {
             @Override
-            public void paintComponent(Graphics g) {
-
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g;
+                g2d.setColor(Color.RED);
+                for(Rectangle r : nivel1Hitboxes) {
+                    g2d.fillRect(r.x, r.y, r.width, r.height);
+                }
             }
         };
+        contentPane.add(hitboxPanel, BorderLayout.CENTER);
+        contentPane.add(nivel1, BorderLayout.CENTER);
+
         Rectangle meta = new Rectangle(60, 270, 60, 60);
 
 
@@ -175,7 +192,7 @@ public class Main extends JFrame {
 
                     Rectangle contacto = new Rectangle(jugador.getX() - 10, jugador.getY(), jugador.getWidth(), jugador.getHeight());
                     boolean puedemoverse = true;
-                    for (Rectangle rect : hitbox) {
+                    for (Rectangle rect : nivel1Hitboxes) {
                         if (rect.intersects(contacto)) {
                             puedemoverse = false;
                             break;
@@ -191,7 +208,7 @@ public class Main extends JFrame {
                 if (e.getKeyCode() == KeyEvent.VK_D) {
                     Rectangle contacto = new Rectangle(jugador.getX() + 10, jugador.getY(), jugador.getWidth(), jugador.getHeight());
                     boolean puedemoverse = true;
-                    for (Rectangle rect : hitbox) {
+                    for (Rectangle rect : nivel1Hitboxes) {
                         if (rect.intersects(contacto)) {
                             puedemoverse = false;
                             break;
@@ -206,7 +223,7 @@ public class Main extends JFrame {
                 if (e.getKeyCode() == KeyEvent.VK_W) {
                     Rectangle contacto = new Rectangle(jugador.getX(), jugador.getY() - 10, jugador.getWidth(), jugador.getHeight());
                     boolean puedemoverse = true;
-                    for (Rectangle rect : hitbox) {
+                    for (Rectangle rect : nivel1Hitboxes) {
                         if (rect.intersects(contacto)) {
                             puedemoverse = false;
                             break;
@@ -221,7 +238,7 @@ public class Main extends JFrame {
                 if (e.getKeyCode() == KeyEvent.VK_S) {
                     Rectangle contacto = new Rectangle(jugador.getX(), jugador.getY() + 10, jugador.getWidth(), jugador.getHeight());
                     boolean puedemoverse = true;
-                    for (Rectangle rect : hitbox) {
+                    for (Rectangle rect : nivel1Hitboxes) {
                         if (rect.intersects(contacto)) {
                             puedemoverse = false;
                             break;
@@ -238,6 +255,13 @@ public class Main extends JFrame {
                     contentPane.add(nivel2, BorderLayout.CENTER);
                     contentPane.revalidate();
                     contentPane.repaint();
+
+                    nivel2.add(jugador);
+                    nivel1Hitboxes.clear();
+
+
+
+
                 }
             }
 
@@ -248,5 +272,6 @@ public class Main extends JFrame {
 
         });
 
+        jugador.setFocusable(true);
     }
 }
