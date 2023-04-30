@@ -47,50 +47,34 @@ public class Main extends JFrame {
 
         //fila 1
         hitbox.add(new Rectangle(570, 0, 10, 280));
-
         hitbox.add(new Rectangle(30, 35, 520, 10));
         hitbox.add(new Rectangle(30, 0, 550, 10));
         hitbox.add(new Rectangle(30, 0, 10, 60));
-
-
-
         //fila2
         hitbox.add(new Rectangle(280, 65, 360, 10));
         hitbox.add(new Rectangle(60, 65, 190, 10));
-
         //fila3
         hitbox.add(new Rectangle(280, 95, 80, 10));
         hitbox.add(new Rectangle(30, 95, 180, 10));
-
-
         //fila4
         hitbox.add(new Rectangle(60, 125, 250, 10));
         hitbox.add(new Rectangle(350, 125, 140, 10));
-
         //fila5
         hitbox.add(new Rectangle(30, 155, 120, 10));
         hitbox.add(new Rectangle(250, 155, 40, 10));
         hitbox.add(new Rectangle(370, 155, 120, 10));
-
-
         //fila6
         hitbox.add(new Rectangle(60, 185, 90, 10));
         hitbox.add(new Rectangle(120, 185, 250, 10));
         hitbox.add(new Rectangle(420, 185, 120, 10));
-
-
         //fila7
         hitbox.add(new Rectangle(60, 215, 120, 10));
         hitbox.add(new Rectangle(220, 215, 150, 10));
         hitbox.add(new Rectangle(480, 215, 200, 10));
-
-
         //fila8
         hitbox.add(new Rectangle(60, 245, 100, 10));
         hitbox.add(new Rectangle(180, 245, 80, 10));
         hitbox.add(new Rectangle(380, 245, 140, 10));
-
-
         //fila9
         hitbox.add(new Rectangle(60, 270, 520, 10));
 
@@ -100,54 +84,35 @@ public class Main extends JFrame {
         //fila1
         hitbox.add(new Rectangle(120,35,10,30));
         hitbox.add(new Rectangle(150,35,10,30));
-
-
         //fila2
-
         hitbox.add(new Rectangle(240,65,10,30));
         hitbox.add(new Rectangle(350,65,10,30));
         hitbox.add(new Rectangle(410,65,10,30));
-
         //fila3
         hitbox.add(new Rectangle(280,95,10,30));
         hitbox.add(new Rectangle(350,95,10,30));
         hitbox.add(new Rectangle(480,95,10,30));
-
-
         //fila4
         hitbox.add(new Rectangle(180,125,10,30));
         hitbox.add(new Rectangle(510,125,10,30));
-
-
         //fila5
         hitbox.add(new Rectangle(80,155,10,30));
         hitbox.add(new Rectangle(240,155,10,30));
         hitbox.add(new Rectangle(360,155,10,30));
         hitbox.add(new Rectangle(140,155,10,30));
         hitbox.add(new Rectangle(510,155,10,30));
-
-
         //fila6
         hitbox.add(new Rectangle(510,185,10,30));
         hitbox.add(new Rectangle(450,185,10,30));
         hitbox.add(new Rectangle(360,185,10,30));
-
-
         //fila7
         hitbox.add(new Rectangle(510,215,10,30));
         hitbox.add(new Rectangle(350,215,10,30));
-
         hitbox.add(new Rectangle(60,215,10,30));
-
-
         //fila8
         hitbox.add(new Rectangle(60,245,10,30));
         hitbox.add(new Rectangle(180,245,10,30));
         hitbox.add(new Rectangle(120,245,10,30));
-
-        //meta
-
-
 
         //-----------------------hitboxes del nivel2----------------------------------------
 
@@ -170,9 +135,13 @@ public class Main extends JFrame {
             }
         };
 
-        JPanel nivel2 = new JPanel(){
+        JPanel nivel2 = new JPanel() {
+            @Override
+            public void paintComponent(Graphics g) {
 
+            }
         };
+        Rectangle meta = new Rectangle(60, 270, 60, 60);
 
 
         JButton jugador = new JButton();
@@ -203,6 +172,7 @@ public class Main extends JFrame {
                 System.out.println(e.getKeyCode());
                 System.out.println(e.getKeyChar());
                 if (e.getKeyCode() == KeyEvent.VK_A) {
+
                     Rectangle contacto = new Rectangle(jugador.getX() - 10, jugador.getY(), jugador.getWidth(), jugador.getHeight());
                     boolean puedemoverse = true;
                     for (Rectangle rect : hitbox) {
@@ -210,6 +180,7 @@ public class Main extends JFrame {
                             puedemoverse = false;
                             break;
                         }
+
                     }
                     if (puedemoverse) {
                         jugador.setLocation(jugador.getX() - 10, jugador.getY());
@@ -260,6 +231,13 @@ public class Main extends JFrame {
                         jugador.setLocation(jugador.getX(), jugador.getY() + 10);
                         repaint();
                     }
+                }
+                //cambio de nivel
+                if (meta.intersects(jugador.getBounds())) {
+                    contentPane.remove(nivel1);
+                    contentPane.add(nivel2, BorderLayout.CENTER);
+                    contentPane.revalidate();
+                    contentPane.repaint();
                 }
             }
 
