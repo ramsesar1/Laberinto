@@ -1,19 +1,19 @@
 package GUI;
 
 import java.awt.*;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import javax.swing.JButton;
 
 public class Main extends JFrame {
     private JPanel contentPane;
-//    ArrayList<Rectangle> hitbox = new ArrayList<>();
+    private long iniciartiempo;
+
+    //    ArrayList<Rectangle> hitbox = new ArrayList<>();
 private boolean nivelactivo = true;
     ArrayList<Rectangle> nivel1Hitboxes = new ArrayList<>();
     ArrayList<Rectangle> nivel2Hitboxes = new ArrayList<>();
@@ -258,6 +258,21 @@ private boolean nivelactivo = true;
         nivel2Hitboxes.add(new Rectangle(480,245,10,30));
 
 
+        //contadores
+        Timer timer1 = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+
+        Timer timer2 = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+
+        timer1.start();
+        iniciartiempo = System.currentTimeMillis();
 
 
         JPanel nivel2 = new JPanel() {
@@ -269,6 +284,8 @@ private boolean nivelactivo = true;
                 g2d.setColor(Color.RED);
                 g2d.fillRect(60, 270, 60, 60);
                 g.setColor(Color.BLACK);
+                g.drawString(" " + (timer2.getDelay() / 1000), 0, 10);
+
 
 
                 for (Rectangle rect : nivel2Hitboxes) {
@@ -283,6 +300,8 @@ private boolean nivelactivo = true;
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 Graphics2D g2d = (Graphics2D) g;
+
+
 
                 g2d.setColor(Color.RED);
                 g2d.fillRect(60, 270, 60, 60);
@@ -314,8 +333,10 @@ private boolean nivelactivo = true;
         panel_1.setBackground(new Color(0, 255, 0));
         contentPane.add(panel_1, BorderLayout.SOUTH);
 
+
         JButton btnNewButton = new JButton("Reiniciar");
         panel_1.add(btnNewButton);
+
 
         btnNewButton.addActionListener(new ActionListener() {
             @Override
@@ -450,20 +471,40 @@ private boolean nivelactivo = true;
                     }
                 }
                 if (meta.intersects(jugador.getBounds())) {
-                    contentPane.remove(nivel1);
-                    contentPane.add(nivel2, BorderLayout.CENTER);
-                    contentPane.revalidate();
-                    contentPane.repaint();
+                    timer1.stop();
+                    long tiempototal = (System.currentTimeMillis() - iniciartiempo) / 1000;
 
-                    nivel2.add(jugador);
+                    int result = JOptionPane.showConfirmDialog(contentPane, "¿Quieres seguir jugando?, tiempo: " + tiempototal, "siguiente nivel", JOptionPane.YES_NO_OPTION);
+                    if (result == JOptionPane.YES_OPTION) {
+                        jugador.setLocation(30, 20);
+                        nivelactivo = !nivelactivo;
+                        if (nivelactivo) {
+                            nivel1.setVisible(true);
+                            nivel2.setVisible(false);
+                        } else {
 
-                    nivel1.setVisible(false);
-                    nivel2.setVisible(true);
-                    nivel1Hitboxes.clear();
-                    jugador.setLocation(45, 45);
-                    nivelactivo = false;
+                            contentPane.remove(nivel1);
+                            contentPane.add(nivel2, BorderLayout.CENTER);
+                            contentPane.revalidate();
+                            contentPane.repaint();
+
+                            nivel2.add(jugador);
+
+                            nivel1.setVisible(false);
 
 
+
+
+                            nivel2.setVisible(true);
+                            nivel1Hitboxes.clear();
+                            jugador.setLocation(45, 45);
+                            nivelactivo = false;
+                        }
+                        contentPane.revalidate();
+                        contentPane.repaint();
+                    } else {
+                        System.exit(0);
+                    }
                 }
                 }
 
