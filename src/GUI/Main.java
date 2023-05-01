@@ -284,7 +284,6 @@ private boolean nivelactivo = true;
                 g2d.setColor(Color.RED);
                 g2d.fillRect(60, 270, 60, 60);
                 g.setColor(Color.BLACK);
-                g.drawString(" " + (timer2.getDelay() / 1000), 0, 10);
 
 
 
@@ -306,6 +305,7 @@ private boolean nivelactivo = true;
                 g2d.setColor(Color.RED);
                 g2d.fillRect(60, 270, 60, 60);
                 g.setColor(Color.BLACK);
+
 
 
                 for (Rectangle rect : nivel1Hitboxes) {
@@ -342,6 +342,8 @@ private boolean nivelactivo = true;
             @Override
             public void actionPerformed(ActionEvent e) {
                 jugador.setLocation(30, 20);
+                timer1.restart();
+                iniciartiempo = System.currentTimeMillis();
 
                 if (nivelactivo) {
                     nivel1.repaint();
@@ -360,7 +362,6 @@ private boolean nivelactivo = true;
                 contentPane.repaint();
             }
         });
-
 
 
         jugador.addKeyListener(new KeyListener() {
