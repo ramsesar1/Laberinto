@@ -4,6 +4,8 @@ import java.awt.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ import javax.swing.JButton;
 public class Main extends JFrame {
     private JPanel contentPane;
 //    ArrayList<Rectangle> hitbox = new ArrayList<>();
-
+private boolean nivelactivo = true;
     ArrayList<Rectangle> nivel1Hitboxes = new ArrayList<>();
     ArrayList<Rectangle> nivel2Hitboxes = new ArrayList<>();
     public static void main(String[] args) {
@@ -315,6 +317,31 @@ public class Main extends JFrame {
         JButton btnNewButton = new JButton("Reiniciar");
         panel_1.add(btnNewButton);
 
+        btnNewButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jugador.setLocation(30, 20);
+
+                if (nivelactivo) {
+                    nivel1.repaint();
+                } else {
+                    contentPane.remove(nivel2);
+                    nivel2Hitboxes.clear();
+                    nivel2.setVisible(false);
+
+                    contentPane.add(nivel1, BorderLayout.CENTER);
+                    nivelactivo = true;
+                    nivel1Hitboxes.add(new Rectangle(30, 30, 10, 280));
+                    nivel1.setVisible(true);
+                }
+
+                contentPane.revalidate();
+                contentPane.repaint();
+            }
+        });
+
+
+
         jugador.addKeyListener(new KeyListener() {
             boolean nivelactivo = true;
             @Override
@@ -444,6 +471,10 @@ public class Main extends JFrame {
             public void keyReleased(KeyEvent e) {
                 System.out.println("keyReleased");
             }
+
+
+
+
         });
 
         jugador.setFocusable(true);
